@@ -4,13 +4,6 @@ from ..requests import get_sources, get_articles, topheadlines, everything, sear
 from ..models import Sources
 
 # Views
-@main.route('/')
-def index():
-
-    '''
-    View root page function that returns the index page and its data
-    '''
-    return render_template('index.html')
 
 
 @main.route('/')

@@ -17,4 +17,4 @@ class SourcesTest(unittest.TestCase):
         Test to check if new_sources instance exists
         '''
 
-        self.assertTrue(isinstance(self.new_sources,Sources))
+        self.assertTrue(isinstance(self.new_sources,Sources.class_or_type_or_tuplepython 3.6))
