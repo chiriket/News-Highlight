@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..requests import get_sources, get_articles, topheadlines, everything, search_everything
+from ..requests import get_sources, get_articles, topheadlines, everything # search_everything
 from ..models import Sources
 
 # Views
@@ -11,7 +11,6 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    # message = 'Hello World'
 
     cat_general = get_sources('general')
     cat_business = get_sources('business')
@@ -39,9 +38,9 @@ def articles(source_id,per_page):
 @main.route('/topheadlines&<int:per_page>')
 def headlines(per_page):
     '''
-    Function that returns top headlines articles
-    '''
-    # per_page = 40
+#     Function that returns top headlines articles
+#     '''
+     # per_page = 40
     topheadlines_news = topheadlines(per_page)
     title = 'Top Headlines'
     return render_template('topheadlines.html',title=title, name='Top Headlines' ,news=topheadlines_news)
@@ -49,29 +48,29 @@ def headlines(per_page):
 @main.route('/everything&<int:per_page>')
 def all_news(per_page):
     '''
-    Function that returns top headlines articles
-    '''
+#     Function that returns top headlines articles
+#     '''
     # per_page = 40
     everything_news = everything(per_page)
     title = 'All News'
     
-    search_articles = request.args.get('search_query')
+#     search_articles = request.args.get('search_query')
 
-    if search_articles:
-        return redirect(url_for('main.search',topic=search_articles))
-    else:
-        return render_template('topheadlines.html', title=title, name='All News', news=everything_news)
+#     if search_articles:
+#         return redirect(url_for('main.search',topic=search_articles))
+#     else:
+#         return render_template('topheadlines.html', title=title, name='All News', news=everything_news)
 
-@main.route('/search/<topic>')
-def search(topic):
-    '''
-    function that returns the results of search request
-    '''
-    limit = 40
-    search_name = topic.split(" ")
-    search_name_format = "+".join(search_name)
-    search_every = search_everything(limit,search_name_format)
+# @main.route('/search/<topic>')
+# def search(topic):
+#     '''
+#     function that returns the results of search request
+#     '''
+#     limit = 40
+#     search_name = topic.split(" ")
+#     search_name_format = "+".join(search_name)
+#     search_every = search_everything(limit,search_name_format)
 
-    title = '{search_name_format} Results'
+#     title = '{search_name_format} Results'
 
-    return render_template('search.html',title=title,news = search_every)
+#     return render_template('search.html',title=title,news = search_every)

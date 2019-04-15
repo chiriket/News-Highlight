@@ -1,12 +1,22 @@
 {% extends 'base.html'%} 
 {% import 'macros.html' as macro %}
 
+
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
 {% block content%}
-<div class="container-fluid">
+
+<div class="well">
+  <div class="container">  
+   <div class="jumbotron">
     <div class="row" id="top">
         <div class="col-md-12 heading">
             <h1>News Highlights</h1>
         </div>
+     </div>
     </div>
     <hr>
     <div class="row">
@@ -57,5 +67,6 @@
         </div>
         {{macro.sourceCategories(health)}}
     </div>
+  </div>
 </div>
 {% endblock%}
