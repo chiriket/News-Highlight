@@ -98,8 +98,8 @@ def process_articles(my_articles):
 
 def topheadlines(limit):
     '''
-#     Function that gets articles based on the source id
-#     '''
+    Function that gets articles based on the source id
+    '''
     get_topheadlines_url = topheadlines_url.format(limit,api_key)
 
     with urllib.request.urlopen(get_topheadlines_url) as url:
